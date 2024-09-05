@@ -1,14 +1,13 @@
-from time import sleep
 from random import randint
+from time import sleep
 
 
 def no_of_chances(choice):
-    chances = {
-        "1": 10,
-        "2": 5,
-        "3": 3
-    }
-    return chances.get(choice, 10)
+    chances_dict = {"1": 10, "2": 5, "3": 3}
+    chances = chances_dict.get(choice, 10)
+    print(f"You have {chances} to guess the correct number.")
+    return chances
+
 
 def game(chances):
     guess = random_number()
@@ -19,7 +18,9 @@ def game(chances):
         user_guess = int(input("Enter your guess: "))
         if user_guess == guess:
             print()
-            print(f"Congratulations! You guessed the correct number in {attempts} attempts.")
+            print(
+                f"Congratulations! You guessed the correct number in {attempts} attempts."
+            )
             play_again_exit()
         elif user_guess > guess:
             print(f"Incorrect! The number is less than {user_guess}")
@@ -27,6 +28,7 @@ def game(chances):
             print(f"Incorrect! The number is greater than {user_guess}")
         chances -= 1
     play_again_exit()
+
 
 def play_again_exit():
     print()
@@ -49,6 +51,7 @@ def play_again_exit():
         print("Invalid option. Please try again.")
         play_again_exit()
 
+
 def select_difficulty_level():
     print()
     print("Select a difficulty level:")
@@ -59,8 +62,10 @@ def select_difficulty_level():
     chances = no_of_chances(choice)
     game(chances)
 
+
 def random_number():
     return randint(1, 100)
+
 
 def main():
     print()
@@ -69,7 +74,7 @@ def main():
     guess = random_number()
     sleep(1)
     select_difficulty_level()
-    
-        
+
+
 if __name__ == "__main__":
     main()
