@@ -5,6 +5,7 @@ from time import sleep
 def no_of_chances(choice):
     chances_dict = {"1": 10, "2": 5, "3": 3}
     chances = chances_dict.get(choice, 10)
+    print()
     print(f"You have {chances} to guess the correct number.")
     return chances
 
@@ -71,7 +72,6 @@ def main():
     print()
     print("Welcome to the Number Guessing Game!")
     print("I'm thinking of a number between 1 and 100")
-    guess = random_number()
     sleep(1)
     select_difficulty_level()
 
