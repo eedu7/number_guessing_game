@@ -1,6 +1,11 @@
 from random import randint
 from time import sleep
 
+# Define ANSI escape codes for colors
+RESET = "\033[0m"
+RED = "\033[31m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
 
 def no_of_chances(choice):
     chances_dict = {"1": 10, "2": 5, "3": 3}
@@ -20,13 +25,13 @@ def game(chances):
         if user_guess == guess:
             print()
             print(
-                f"Congratulations! You guessed the correct number in {attempts} attempts."
+                f"{GREEN}Congratulations! You guessed the correct number in {attempts} attempts.{RESET}"
             )
             play_again_exit()
         elif user_guess > guess:
-            print(f"Incorrect! The number is less than {user_guess}")
+            print(f"{YELLOW}Incorrect! The number is less than {user_guess}{RESET}")
         elif user_guess < guess:
-            print(f"Incorrect! The number is greater than {user_guess}")
+            print(f"{YELLOW}Incorrect! The number is greater than {user_guess}{RESET}")
         chances -= 1
     play_again_exit()
 
@@ -45,11 +50,11 @@ def play_again_exit():
         select_difficulty_level()
     elif choice == "3":
         print()
-        print("Thank you for playing!")
+        print(f"{GREEN}Thank you for playing!{RESET}")
         print()
         exit()
     else:
-        print("Invalid option. Please try again.")
+        print(f"{RED}Invalid option. Please try again.{RESET}")
         play_again_exit()
 
 
